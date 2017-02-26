@@ -3,9 +3,9 @@ package com.twu.biblioteca;
 public class BibliotecaApp {
 
     private final Display display;
-    private final String[] books;
+    private final Book[] books;
 
-    public BibliotecaApp(Display display, String[] books) {
+    public BibliotecaApp(Display display, Book[] books) {
         this.display = display;
         this.books = books;
     }
@@ -17,8 +17,8 @@ public class BibliotecaApp {
 
     private void displayBooks() {
         display.displayMessage("Books:");
-        for(String book : books) {
-            display.displayMessage(book);
+        for(Book book : books) {
+            display.displayMessage(book.getTitle());
         }
     }
 }

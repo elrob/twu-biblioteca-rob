@@ -14,12 +14,12 @@ public class BibliotecaAppTest {
 
     private BibliotecaApp app;
     private ByteArrayOutputStream outSpy;
-    private String[] books;
+    private Book[] books;
 
     @Before
     public void setUp() {
         outSpy = new ByteArrayOutputStream();
-        books = new String[]{ "A book title", "Another book title" };
+        books = new Book[]{ new Book("A book title"), new Book("Another book title") };
     }
 
     @Test
