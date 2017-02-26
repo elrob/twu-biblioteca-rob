@@ -5,16 +5,12 @@ public class BibliotecaApp {
     private final Display display;
 
     public static void main(String[] args) {
-        BibliotecaApp app = new BibliotecaApp(null);
+        Display commandLineDisplay = new Display(System.out);
+        BibliotecaApp app = new BibliotecaApp(commandLineDisplay);
         app.run();
     }
 
-    public void run() {
-        display.displayMessage("Welcome to Biblioteca!");
-    }
+    public BibliotecaApp(Display display) { this.display = display; }
 
-    public BibliotecaApp(Display display) {
-        this.display = display;
-    }
-
+    public void run() { display.displayMessage("Welcome to Biblioteca!"); }
 }
