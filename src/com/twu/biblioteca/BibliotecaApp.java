@@ -10,6 +10,7 @@ public class BibliotecaApp {
     }
 
     public void run() {
+        display.displayMessage("Welcome to Biblioteca!");
     }
 
     public BibliotecaApp(Display display) {
