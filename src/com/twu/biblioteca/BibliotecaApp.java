@@ -5,13 +5,6 @@ public class BibliotecaApp {
     private final Display display;
     private final String[] books;
 
-    public static void main(String[] args) {
-        Display commandLineDisplay = new Display(System.out);
-        String[] books = new String[]{ "Don Quixote", "Pilgrim's Progress" };
-        BibliotecaApp app = new BibliotecaApp(commandLineDisplay, books);
-        app.run();
-    }
-
     public BibliotecaApp(Display display, String[] books) {
         this.display = display;
         this.books = books;
