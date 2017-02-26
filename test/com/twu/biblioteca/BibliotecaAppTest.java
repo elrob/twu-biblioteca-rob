@@ -19,7 +19,9 @@ public class BibliotecaAppTest {
     @Before
     public void setUp() {
         outSpy = new ByteArrayOutputStream();
-        books = new Book[]{ new Book("A book title"), new Book("Another book title") };
+        Book aBook = new Book("A book title", "An author", 1966);
+        Book anotherBook = new Book("Another book title", "Another author", 1977);
+        books = new Book[]{aBook,  anotherBook};
     }
 
     @Test
@@ -33,7 +35,15 @@ public class BibliotecaAppTest {
     public void runShowsBookListLast() {
         app = new BibliotecaApp(new Display(new PrintStream(outSpy)), books);
         app.run();
-        Assert.assertThat(outSpy.toString(), endsWith("Books:\nA book title\nAnother book title\n"));
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("Books:\n");
+        expected.append("Title                         Author                        Year Published\n");
+        expected.append("==========================================================================\n");
+        expected.append("A book title                  An author                     1966          \n");
+        expected.append("Another book title            Another author                1977          \n");
+
+        Assert.assertThat(outSpy.toString(), endsWith(expected.toString()));
     }
 }
 
