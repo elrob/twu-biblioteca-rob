@@ -72,6 +72,15 @@ public class BibliotecaAppTest {
         Assert.assertThat(outSpy.toString(), endsWith("Select a valid option!\n"));
     }
 
+    @Test
+    public void showsInvalidOptionMessageWhenUserDoesNotInputInteger() {
+        String notInteger = "INVALID_OPTION";
+        app = new BibliotecaApp(books, fakeUserInput(notInteger), fakeDisplay(outSpy));
+        app.run();
+
+        Assert.assertThat(outSpy.toString(), endsWith("Select a valid option!\n"));
+    }
+
     private Display fakeDisplay(ByteArrayOutputStream outSpy) {
         return new Display(new PrintStream(outSpy));
     }

@@ -24,7 +24,16 @@ public class BibliotecaApp {
         display.displayMessage("0 | Exit");
         display.displayMessage("1 | List Books");
 
-        int userOption = input.readUserOption();
+        handleUserInput();
+    }
+
+    private void handleUserInput() {
+        int userOption;
+        try {
+            userOption = input.readUserOption();
+        } catch(Exception e){
+            userOption = -1;
+        }
 
         switch(userOption) {
             case 0: break;
