@@ -27,14 +27,14 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void runShowsWelcomeMessageFirst() {
+    public void showsWelcomeMessageFirst() {
         app = new BibliotecaApp(books, fakeUserInput(EXIT_OPTION), fakeDisplay(outSpy));
         app.run();
         Assert.assertThat(outSpy.toString(), startsWith("Welcome to Biblioteca!\n"));
     }
 
     @Test
-    public void runShowsMainMenu() {
+    public void showsMainMenu() {
         app = new BibliotecaApp(books, fakeUserInput(EXIT_OPTION), fakeDisplay(outSpy));
         app.run();
 
@@ -49,7 +49,7 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void runShowsBookListWhenSelected() {
+    public void showsBookListWhenSelected() {
         app = new BibliotecaApp(books, fakeUserInput(LIST_BOOKS_OPTION), fakeDisplay(outSpy));
         app.run();
 
@@ -61,6 +61,15 @@ public class BibliotecaAppTest {
         expected.append("Another book title            Another author                1977          \n");
 
         Assert.assertThat(outSpy.toString(), endsWith(expected.toString()));
+    }
+
+    @Test
+    public void showsInvalidOptionMessageWhenUserSelectsAnInvalidOption() {
+        String invalidOption = "666";
+        app = new BibliotecaApp(books, fakeUserInput(invalidOption), fakeDisplay(outSpy));
+        app.run();
+
+        Assert.assertThat(outSpy.toString(), endsWith("Select a valid option!\n"));
     }
 
     private Display fakeDisplay(ByteArrayOutputStream outSpy) {

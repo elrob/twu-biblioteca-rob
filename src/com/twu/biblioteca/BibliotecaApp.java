@@ -24,9 +24,17 @@ public class BibliotecaApp {
         display.displayMessage("0 | Exit");
         display.displayMessage("1 | List Books");
 
-        int option = input.readUserOption();
-        if (option == 0) return;
-        displayBooks();
+        int userOption = input.readUserOption();
+
+        switch(userOption) {
+            case 0: break;
+            case 1: displayBooks(); break;
+            default: displayInvalidOptionMessage();
+        }
+    }
+
+    private void displayInvalidOptionMessage() {
+        display.displayMessage("Select a valid option!");
     }
 
     private void displayBooks() {
