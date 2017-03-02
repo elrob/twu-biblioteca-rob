@@ -1,20 +1,24 @@
 package com.twu.biblioteca;
 
-public class BibliotecaApp {
+class BibliotecaApp {
 
     private final Book[] books;
     private final Input input;
     private final Display display;
 
-    public BibliotecaApp(Book[] books, Input input, Display display) {
+    BibliotecaApp(Book[] books, Input input, Display display) {
         this.input = input;
         this.display = display;
         this.books = books;
     }
 
-    public void run() {
+    void run() {
         display.displayMessage("Welcome to Biblioteca!");
-        displayMainMenu();
+        boolean continueRunning = true;
+        while(continueRunning) {
+            displayMainMenu();
+            continueRunning = handleUserInput();
+        }
     }
 
     private void displayMainMenu() {
@@ -23,11 +27,9 @@ public class BibliotecaApp {
         display.displayMessage("Please select an option:");
         display.displayMessage("0 | Exit");
         display.displayMessage("1 | List Books");
-
-        handleUserInput();
     }
 
-    private void handleUserInput() {
+    private boolean handleUserInput() {
         int userOption;
         try {
             userOption = input.readUserOption();
@@ -36,10 +38,12 @@ public class BibliotecaApp {
         }
 
         switch(userOption) {
-            case 0: break;
+            case 0: return false;
             case 1: displayBooks(); break;
             default: displayInvalidOptionMessage();
         }
+
+        return true;
     }
 
     private void displayInvalidOptionMessage() {

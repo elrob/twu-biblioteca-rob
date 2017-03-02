@@ -6,7 +6,7 @@ public class BibliotecaRunner {
         Book book1 = new Book("Don Quixote", "Miguel De Cervantes", 1605);
         Book book2 = new Book("Pilgrim's Progress", "John Bunyan", 1678);
         Book[] books = new Book[]{book1, book2};
-        BibliotecaApp app = new BibliotecaApp(books, new Input(System.in), commandLineDisplay);
+        BibliotecaApp app = new BibliotecaApp(books, new ScannerInput(System.in), commandLineDisplay);
         app.run();
     }
 }
